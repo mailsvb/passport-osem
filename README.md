@@ -61,7 +61,9 @@ passport.use(new OAuth2Strategy({
     tokenURL: 'https://www.example.com/oauth2/token',
     clientID: EXAMPLE_CLIENT_ID,
     clientSecret: EXAMPLE_CLIENT_SECRET,
-    callbackURL: "http://localhost:3000/auth/example/callback"
+    callbackURL: "http://localhost:3000/auth/example/callback",
+    rejectUnauthorized: true|false,
+    ca: <Buffer>
   },
   function(accessToken, refreshToken, profile, cb) {
     User.findOrCreate({ exampleId: profile.id }, function (err, user) {
